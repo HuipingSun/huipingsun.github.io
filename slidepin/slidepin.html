@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>Huiping Sun@Peking University</title>
+
+<style type="text/css">
+#header {
+	background: url(images/header.gif) center center repeat-x;
+}
+
+body {
+	width: 720px;
+	margin: auto;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1,h2,h3 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 1.8em;
+}
+
+h2 {
+	font-size: 1.2em;
+	margin-bottom: .6em;
+}
+
+h3 {
+	font-size: 1.0em;
+}
+
+p,blockquote,ul,ol {
+	font-size: 13px;
+	margin-left: .0em;
+	margin-bottom: 1.4em;
+	line-height: 1.4em;
+	text-align: justify;
+}
+
+.STYLE1 {
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.STYLE6 {
+	font-size: small
+}
+</style>
+</head>
+<body>
+	<h1 align="center">SlidePIN</h1>
+	<HR
+		style="FILTER: alpha(opacity =                 100, finishopacity =                 0, style =                 1)"
+		width="100%" color="#000000" SIZE=3>
+	<h2>INTRODUCTION</h2>
+
+	<p>
+		<span style="font-size: 16px">SlidePIN</span> is a PIN entry mechanism
+		based on slide input method combined with a random numeric keypad. As
+		slide input method ensures higher usability and security, random
+		numeric keypad introduced, at a slight cost of usability,
+		conspicuously enhances the security of SlidePIN. As an indirect entry
+		mechanism, SlidePIN keeps users away from additional computation or
+		memory burden. SlidePIN performs effectively against one-time shoulder
+		surfing attack and better than 4-digit PIN mechanism against
+		multi-time shoulder surfing attack.
+	</p>
+	<h2>BACKGROUND</h2>
+	<p>The 4-digit PIN (Personal Identification Numbers) mechanism that
+		is used most widely asks users to input the PIN directly, which makes
+		it vulnerable to shoulder surfing attacks. With better resistance
+		against shoulder surfing attacks, invisible entry mechanism and
+		indirect entry mechanism are proposed and developed. However, these
+		mechanisms need either additional hardware or extra computation to
+		ensure security and usability. The Word-Gesture Keyboard concept was
+		proposed by Montgomery in 1982 and inspired by this concept, we
+		propose SlidePIN as an indirect entry mechanism with a random numeric
+		keypad and slide input method.</p>
+	<h2>CONCEPT</h2>
+	Design:
+	<table>
+		<tr>
+			<td>
+				<ol>
+					<li>Slide input is faster. It has been shown that click input
+						is an operation with more complexity than slide input, which
+						suggests that slide input will help improve input efficiency.</li>
+					<li>Slide input is more secure. As for slide input, a user
+						tends to wittingly or unwittingly slide to other non-PIN numbers,
+						making the user’s PIN concealed in a slide sequence with more
+						digits. This makes SlidePIN more secure than traditional click
+						input method against shoulder surfing attacks.</li>
+					<li>Input with a random numeric keypad is more secure. With a
+						random numeric keypad introduced, randomness helps SlidePIN
+						perform better against replay attacks.</li>
+				</ol>
+			</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td><img src="images/introduction.jpg" alt="Sun Huiping's Photo"
+				width="205" height="216"></td>
+		</tr>
+	</table>
+	Implementation:
+	<ol>
+		<li>Setup Phase: Like 4-digit PIN, the user chooses 4 ordered
+			digit numbers as the master secret between him/her and the
+			smartphone, usually referred to a PIN.</li>
+		<li>Unlocking Phase: Instead of directly input, the user touches
+			and slides over a keypad passing all digits of PIN in order. As
+			figure shows, the keypad is a random numeric keypad. In addition, the
+			sliding process should start from '*' and end up with '#'. If slide
+			sequence contains the PIN as its subsequence, the authentication will
+			be passed. For instance, '1245' as a user's PIN, the user needs to
+			slide over a trace starting from '*' and ending with '#' and
+			subsequence '1245' has to be contained in exact order on the numeric
+			keypad. As figure shows, '*381629458#' is one of the valid sliding
+			traces which can unlock the phone.</li>
+	</ol>
+
+	<h2>EXPERIMENTS</h2>
+	<p>To evaluate the usability and security of SlidePIN, we recruited
+		in total 20 students as volunteers to conducted relevant experiments.
+		Based on data obtained from these experiments, we analyzed the
+		reasonable range of slide sequence, orientation time, unlock time,
+		error rate and the capability of SlidePIN against multi-time shoulder
+		surfing attacks.</p>
+	<img src="images/experiment.jpg" alt="Sun Huiping's Photo" width="700"
+		height="325">
+	Experiment Consequence
+	<ol>
+		<li>Average Sequence Length: <u>11.46 (theoretical value:
+				11.55)</u></li>
+		<li>Orientation Time: <u>1.186s</u></li>
+		<li>Unlock Time: <u>3.552s</u></li>
+		<li>Error Rate: <u>13.04%</u></li>
+		<li>The Capability Against Multi-time Shoulder Surfing: <u>at
+				least 2 times</u></li>
+
+	</ol>
+	<HR
+		style="FILTER: alpha(opacity =                 100, finishopacity =                 0, style =                 1)"
+		width="100%" color="#000000" SIZE=3>
+	<div align="right">
+		<a> Last update: 2015-3-25</a>
+	</div>
+</body>
+</html>
