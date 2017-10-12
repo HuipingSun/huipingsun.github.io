@@ -1,2 +1,2 @@
 # huipingsun.github.io
-Huiping Sun @ Peking University
+Huiping Sun‘s Homepage
