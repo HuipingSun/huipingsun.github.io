@@ -54,21 +54,7 @@ p,blockquote,ul,ol {
 </style>
 </head>
 <body>
-	<%@ page import="java.io.*"%>
-	<%@ page import="java.util.Date"%>
-	<%
-		String ip = request.getRemoteAddr();
-		System.out.println(ip);
-		try {
-
-			PrintWriter out1 = new PrintWriter(new FileWriter(
-					"countip.txt", true));
-			out1.print(ip + new Date() + "\r\n");
-			out1.close();
-		} catch (IOException e) {
-			e.toString();
-		}
-	%>
+	
 	<table width="800" cellpadding="10">
 		<tr>
 			<td width="331" height="266"><img src="images/index_sunhp.jpg"
