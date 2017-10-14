@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <link href="./class_files/style1.css" rel="stylesheet" type="text/css">
+  <title>Information Security Engineering(Spring 2016)</title>
+</head>
+<body bgcolor="#ffffff">
+
+<h1>0CI01(01712560): Information Security Engineering(Fall 2016)</h1>
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody><tr><td class="navbar">
+<a href="./ise2016.html?#description">Description</a> |
+<a href="./ise2016.html?#schedule">Schedule</a> |
+<a href="./ise2016.html?#grading">Grading</a> |
+<a href="./ise2016.html?#project">Projects</a> |
+</td></tr></tbody></table>
+<br>
+<table width="98%" border="0" cellspacing="0" cellpadding="4" align="center">
+
+  <tbody><tr valign="top">
+    <td>
+        <p>Time: Thursdays 8:30-11:30 am</p>
+        <p>Location: 3305, Teaching Builing, DaXing</p>
+        <p>Class web site: <a href="https://huipingsun.github.io/ise2016">https://huipingsun.github.io/ise2016</a></p>
+
+    </td>
+    <td>
+        <p>Instructor: <a href="https://huipingsun.github.io">Huiping Sun (sunhp(at)ss.pku.edu.cn)</a></p>
+        <p>TA: No</p>
+        <p>Textbook: Ross Anderson. <a href="http://www.cl.cam.ac.uk/~rja14/book.html">Security Engineering. Second Edition. </a>Wiely. 2008.</p>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+<a name="description"><h2>Course Description</h2></a>
+
+<p>Although most of traditional cryptography and security techology are relatively well understood, the knowledge and practice of how to apply user's economical, psychological and social factor into security is insufficient. <br><br>
+
+The course covers the basics of economics, psychology and socialology of security, and introduces password, biometrics, CAPTCHA, physical protection, reputation and others technology, in the meantime, analyses how to implement information security engineering in some critical information systems and applications such as crowdsource, payment, smartphone, social network.</p>
+
+
+
+<a name="schedule"><h2>Course Schedule</h2></a>
+
+<table width="98%" border="1" cellspacing="0" cellpadding="4" align="center">
+
+  <tbody><tr valign="top">
+    <td><h3>Date</h3>
+    </td>
+    <td><h3>Topics</h3>
+    </td>
+    <td><h3>Readings</h3>
+
+    </td>
+  </tr>
+
+
+
+<tr valign="top">
+<td><p>September 22</p></td>
+<td><p>01. Course Overview [<a href="./class_files/ISE2016_01.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 1: What Is Security Engineering?</li>
+</ul>
+</td>
+</tr>
+
+
+<tr valign="top">
+<td><p>September 22</p></td>
+<td><p>02. Economics of Information Security [<a href="./class_files/ISE2016_02.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 7: Economics</li>
+<li>Ross Anderson. <a href="https://www.acsac.org/2001/papers/110.pdf">Why Information Security is Hard - An Emconmics Perspective.</a> In Proc. ACSAC'2001.</li>
+<li>Tyler Moore and Ross Anderson. <a href="https://www.cl.cam.ac.uk/~rja14/Papers/moore-anderson-infoeconsurvey2011.pdf">Economics and Internet Security - a Survey of Recent Analytical, Empirical and Behavioral Research.</a> Technical Report 2011.</li>
+<li>Ross Anderson.<a href="https://www.cl.cam.ac.uk/~rja14/Papers/econ_acsac2012.pdf"> Security Economics - A Personal Perspective.</a>  In Proc. ACSAC'2012.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>September 29</p></td>
+<td><p>03. Usable Security [<a href="./class_files/ISE2016_03.pdf">Slides</a>]</p></td>
+<td><p>
+ <ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 2: Usability and Psychology</li>
+<li>Alma Whitten and J.D.Tygar. <a href="http://www.gaudior.net/alma/johnny.pdf">Why Johnny Can't Encrypt: A Usability Evaluation of PGP 5.0. </a>In Proc. USENIX Security'1999.</li>
+<li>Anne Adams and Martina Angela Sasses. <a href="http://discovery.ucl.ac.uk/20247/2/CACM%20FINAL.pdf">Users Are Not The Enemy. </a>In Communications of ACM. 1999.</li>
+<li>Lorrie Faith Cranor. <a href="https://www.usenix.org/legacy/event/upsec08/tech/full_papers/cranor/cranor.pdf">A Framework for Reasoning About the Human in the Loop.</a> In Proc. UPSEC'2008.</li>
+<li>Bruce Schneier.<a href="https://www.schneier.com/essays/archives/2008/01/the_psychology_of_se.html"> The Psychology of Security.</a> 2008.</li>
+ </ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>October 6</p></td>
+<td><p>04. Graphical Password [<a href="./class_files/ISE2016_04.pdf">Slides</a>][<a href="../pasapp/PassApp_MobileHCI15Presentation.pdf">PassApp-Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Robert Biddle et al. <a href="http://hotsoft.carleton.ca/~sonia/content/Chiasson_TR-11-01.pdf">Graphical Passwords: Learning from the First Twelve Years.</a> In ACM Computing Surveys. 2012.</li>
+<li>Florian Schaub et al. <a href="https://cups.cs.cmu.edu/soups/2013/proceedings/a11_Schaub.pdf">Exploring the Design Space of Graphical Passwords on Smartphones. </a> In Proc. SOUPS'2013.</li>
+<li>Huiping Sun et al. <a href="http://dl.acm.org/citation.cfm?id=2785880">PassApp: My App is My Password! </a>In Proc. MobileHCI'2015.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>October 13</p></td>
+<td><p>05. Password Manager <br><br>
+[<a href="./class_files/ISE2016_05_Zhang.pdf">Jun Zhang</a>, <a href="./class_files/ISE2016_05_Wang.pdf"> Kai Wang</a>, <a href="./class_files/ISE2016_05_Mao.pdf">Zhilai Mao</a>]
+</p></td>
+<td><p>
+<ul>
+<li>Zhiwei Li et al. <a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-li-zhiwei.pdf">The Emperor's New Password Manager: Security Analysis of Web-based Password Managers. </a> In Proc. USENIX Security'2014. </li>
+<li>David Silver et al. <a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-silver.pdf">Password Managers: Attacks and Defenses. </a> In Proc. USENIX Security'2014. </li>
+<li>Nora Alkaldi and Karen Renaud. <a href="https://www.internetsociety.org/sites/default/files/08%20why-do-people-adopt-or-reject-smartphone-password-managers.pdf">Why Do People Adopt, or Reject, Smartphone Password Managers? </a> In Proc. EuroUSEC'2016. </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>October 13</p></td>
+<td><p>06. Text Password [<a href="./class_files/ISE2016_06.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 2.4: Passwords </li>
+<li>Cormac Herley and Paul van Oorschot. <a href="http://ieeexplore.ieee.org/document/7000543/citations?tabFilter=papers">A Research Agenda Acknowledging the Persistence of Passwords. </a> In IEEE Security & Pricacy Magazine. 2012.</li>
+<li>Joseph Bonneau et al. <a href="http://www.jbonneau.com/doc/BHOS15-CACM-imperfect_authentication.pdf">Passwords and The Evolution of Imperfect Authentication. </a> In Communications of ACM. 2015.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+
+
+<tr valign="top">
+<td><p>October 20</p></td>
+<td><p>07. Biometrics [<a href="./class_files/ISE2016_07.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 15: Biometrics </li>
+<li> Weizhi Meng et al. <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Persistence-authorcopy.pdf">Surveying the Development of Biometric User Authentication on Mobile Phones. </a> In IEEE Communication Survey & Tutorials. 2014.</li>
+<li> Addulaziz Alzubaidi and Jugal Kalita. <a href="http://ieeexplore.ieee.org/document/7423666/">Authentication of Smartphone Users Using Behavioral Biometrics. </a> In IEEE Communication Survey & Tutorials. 2015.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>October 27</p></td>
+<td><p>08. Human Computation [<a href="./class_files/ISE2016_08.pdf">Slides</a>] <br><br>
+[Xiaolin Qin, Haotian Hao, Xiaolong Liu, Meiyouyou Yuan]
+</p></td>
+<td><p>
+<ul>
+<li>Edith law and Luis von Ahn. <a href="http://www.csc2.ncsu.edu/faculty/mpsingh/local/Social/f15/wrap/readings/Law+von-Ahn-Human-Computation.pdf">Human Computation. </a> Synthesis Lectures on Artificial Intelligence and Machine Learning 2011.
+<li>Alexander J. Quinn and Benjamin B. Bederson <a href="http://alexquinn.org/papers/Human%20Computation,%20A%20Survey%20and%20Taxonomy%20of%20a%20Growing%20Field%20(CHI%202011).pdf">Human Computation: A Survey and Taxonomy of a Growing Field. </a> In Proc. CHI'2011.
+</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 3</p></td>
+<td><p>09. Password Vaults <br><br>
+[<a href="./class_files/ISE2016_09_Chen.pdf">Shihai Chen</a> , <a href="./class_files/ISE2016_09_Yang.pdf">Shinai Yang</a> ]
+</p></td>
+<td><p>
+<ul>
+<li>Ari Juels and Ronald L. Rivest. <a href="https://people.csail.mit.edu/rivest/pubs/JR13.pdf"> Honeywords-Making Password-Cracking Detectable. </a> In Proc. CCS'2013. </li>
+<li>Georgio Kontaxis et al. <a href="https://www.cs.stevens.edu/~gportoka/files/sauth_ccs13.pdf">SAuth: Protecting User Accounts from Password Database Leaks. </a> In Proc. CCS'2013.</li>
+</ul></p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 3</p></td>
+<td><p>10. CAPTCHA [<a href="./class_files/ISE2016_10.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Gerardo Reynaga. <a href="https://www.ccsl.carleton.ca/people/gerardo/Reynaga_thesis.pdf">The Usability of CAPTCHAs on Mobile Devices. Chapter 2: Backgrounds. </a> PhD. Dissertation. Carleton University. 2015.</li>
+<li>Suphannee Sivakorn et al. <a href="http://www.cs.uic.edu/~polakis/papers/sivakorn_eurosp16.pdf">I Am Robot- (Deep) Learning to Break Semantic Image CAPTCHAs. </a> In Proc. EuroS&P'2016.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 10</p></td>
+<td><p>11. Reputation [<a href="./class_files/ISE2016_11.pdf">Slides</a>]<br><br>
+[<a href="./class_files/ISE2016_11_Pan.pdf">Dong Pan</a>]
+</p></td>
+<td><p>
+<ul>
+<li>Paul Resnick et al. <a href="http://dl.acm.org/citation.cfm?id=355122">Reputation System. </a>In Communications of the ACM. 2000.</li>
+<li>Lik Mui et al. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.127.7256&rep=rep1&type=pdf">A Computational Model of Trust and Reputation. </a> In Proc. HICSS'2002.</li>
+<li>Audun Josang et al. <a href="https://www.oasis-open.org/committees/download.php/28303/JIB2007-DSS-Survey.pdf">A Survey of Trust and Reputation Systems for Online Service Provision. </a>In Decision Support Systems. 2007.</li>
+<li>Steven Tadelis. <a href="http://ieeexplore.ieee.org/document/7325207">The Economics of Reputation and Feedback Systems in E-Commerce Marketplaces. </a>In IEEE Internet Computing Magazine. 2016. </li>
+</ul>
+</p>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 17</p></td>
+<td><p>12. Project Progress Presentation <br><br>
+13. Physical Protection [<a href="./class_files/ISE2016_13.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 11: Physical Protection </li>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 14: Security Printing and Seals </li>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 16: Physical Tamper Resistance </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 24</p></td>
+<td><p>14. Fingerprinting <br><br>
+[<a href="./class_files/ISE2016_14_Hu.pdf">Haoran Hu</a>, <a href="./class_files/ISE2016_14_Wang.pdf">Bingyan Wang</a>, <a href="./class_files/ISE2016_14_Chen.pdf">Tengfei Chen</a>]
+</p></td>
+<td><p>
+<ul>
+<li>Refael Veras et al. <a href="https://pdfs.semanticscholar.org/51b0/ce84988e083d6253af098542f905e1fea0a8.pdf"> Fingerprinting Web Users through Font Metrics. </a> In Proc. FC'2015. </li>
+<li>Saranga Komanduri et al. <a href="http://people.scs.carleton.ca/~paulv/papers/acsac2016-device-fingerprinting.pdf">Device Fingerprinting for Augmenting Web Authentication: Classification and Analysis of Methods. </a> In Proc. ACSAC'2016.</li>
+<li>Jeremiah Blocki et al. <a href="https://hal.inria.fr/hal-01285470/document">Beauty and the Beast: Diverting Modern Web Browsers to Build Unique Browser Fingerprints. </a> In Proc. IEEE S&P'2016.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>November 24</p></td>
+<td><p>15. Privacy [<a href="./class_files/ISE2016_15.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 23: The Bleeding Edge </li>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 1</p></td>
+<td><p>16. Password Policy <br><br>
+[<a href="./class_files/ISE2016_16_Li.pdf">Menglin Li</a>, <a href="./class_files/ISE2016_16_Xie.pdf">Ruihua Xie</a>, <a href="./class_files/ISE2016_16_Feng.pdf">Chao Feng</a>, <a href="./class_files/ISE2016_16_Baichuan.pdf">Baichuan Li</a>]
+</p></td>
+<td><p>
+<ul>
+<li>Refael Veras et al. <a href="http://www.internetsociety.org/sites/default/files/06_2_1.pdf"> On the Semantic Patterns of Passwords and their Security Impact. </a> In Proc. NDSS'2014. </li>
+<li>Saranga Komanduri et al. <a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-komanduri.pdf">Telepathwords-Preventing Weak Passwords by Reading Users' Minds. </a> In Proc. USENIX Security'2014.</li>
+<li>Jeremiah Blocki et al. <a href="http://www.internetsociety.org/sites/default/files/08_1_1.pdf">Spaced Repetition and Mnemonics Enable Recall of Multiple Strong Passwords. </a> In Proc. NDSS'2015.</li>
+<li>Yue Li et al. <a href="http://www.cs.wm.edu/~ksun/publications/Password-infocom2016.pdf">A Study of Personal Information in Human-chosen Passwords and Its Security Implications. </a> In Proc. Infocom'2016. </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 8</p></td>
+<td><p>17. Social Authentication <br><br>
+[<a href="./class_files/ISE2016_17_Li.pdf">Min Li</a>, <a href="./class_files/ISE2016_17_Yang.pdf">FangFang Yang</a>, <a href="./class_files/ISE2016_17_Liu.pdf">Yihong Liu</a>]</p></td>
+<td><p>
+<ul>
+<li>Iasonas Polakis et al. <a href="https://www.cs.columbia.edu/~angelos/Papers/2012/soauth-break.acsac12.pdf"> All Your Face Are Belong to Us: Breaking Facebook's Social Authentication. </a> In Proc. FC'2012. </li>
+<li>Hyoungshick Kim et al. <a href="https://www.cl.cam.ac.uk/~rja14/Papers/socialauthentication.pdf">Social Authentication: Harder than it Looks. </a> In Proc. FC'2016.</li>
+<li>Iasonas Polakis et al. <a href="https://www.cs.columbia.edu/~angelos/Papers/2014/faces.pdf">Faces in the Distorting Mirror- Revisiting Photo-based Social Authentication. </a> In Proc. CCS'2014.</li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 8</p></td>
+<td><p>18. Social Networks Security [<a href="./class_files/ISE2016_18.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Imrul Kayes and Adriana Iamnitchi <a href="https://arxiv.org/pdf/1504.03342v1.pdf"> A Survey on Privacy and Security in Online Social Network. </a> In arXiv'2015. </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 15</p></td>
+<td><p>19. Access Control [<a href="./class_files/ISE2016_19.pdf">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 4: Access Control </li>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 8: Multilevel Security </li>
+<li>Ross Anderson. Security Engineering (Second Edition). Chapter 9: Multilateral Security </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 22</p></td>
+<td><p>20. Bitcoin I [<a href="https://piazza.com/princeton/spring2015/btctech/resources">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Arvind Narayanan et al. <a href="https://d28rh4a8wq0iu5.cloudfront.net/bitcointech/readings/princeton_bitcoin_book.pdf">Bitcoin and Cryptocurrency Technologies.</a> 2016. </li>
+</ul>
+</p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>December 29</p></td>
+<td><p>21. Bitcoin II [<a href="https://piazza.com/princeton/spring2015/btctech/resources">Slides</a>]</p></td>
+<td><p>
+<ul>
+<li>Arvind Narayanan et al. <a href="https://d28rh4a8wq0iu5.cloudfront.net/bitcointech/readings/princeton_bitcoin_book.pdf">Bitcoin and Cryptocurrency Technologies.</a> 2016. </li>
+</p>
+</ul>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p>January 5</p></td>
+<td><p>22. Final Project Presentations </p></td>
+<td><p><span class="focus">TBD</span></p>
+</td>
+</tr>
+
+<tr valign="top">
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p>
+</td>
+</tr>
+
+</p>
+</td>
+</tr>
+</tbody></table>
+
+
+
+
+<a name="grading"><h2>Course Grading</h2></a>
+
+<p>The grading scheme is as follows:</p>
+
+<ul>
+<li>60% Readings + Quizzers + Presentations</li>
+<li>40% Project</li>
+</ul>
+
+<a name="project"><h2>Course Projects</h2></a>
+<ul>
+<li>Password Manger</li>
+<li>Review Spam Detection</li>
+<li>Honeyword without Checker</li>
+<li>Graphical OTP</li>
+<li>Multiple Word Password</li>
+<li>Visual Password</li>
+<li>Physical Unclonable Function</li>
+</ul>
+</body></html>
