@@ -214,10 +214,26 @@
 
 <p>The grading scheme is as follows:</p>
 
-<ul>
-<li>60% Readings + Quizzers + Presentations</li>
-<li>40% Project</li>
+<ul class="assessment-breakdown">
+  <li>60% - Coursework (Readings, Quizzes, Reports)</li>
+  <li>40% - Final Test</li>
 </ul>
+
+<style>
+  .assessment-breakdown {
+    list-style-type: none; /* 移除默认列表符号 */
+    padding: 0; /* 移除默认内边距 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+  }
+  .assessment-breakdown li {
+    margin-bottom: 10px; /* 列表项间距 */
+    font-size: 16px; /* 字体大小 */
+  }
+  .assessment-breakdown li::before {
+    content: "✔ "; /* 添加自定义符号 */
+    color: #28a745; /* 绿色符号 */
+  }
+</style>
 
 <a name="project"><h2>Course Projects</h2></a>
 <ul>
@@ -226,7 +242,6 @@
 
 <a name="reference"><h2>Course References</h2></a>
 <ul>
-<li><a href="https://huipingsun.github.io/blockchain/">Blockchain Research Source @ Huiping Sun</a></li>
 <li><a href="http://tech.sina.com.cn/zt_d/blockchain_100/">100 Questions of Blockchain</a></li>
 <li><a href="https://bitcoin.org/en/">Bitcoin</a></li>
 </ul>
