@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blockchain (MEM, Fall 2026) · 01716430</title>
+<style>
+  :root{--ink:#26211d;--muted:#6b625a;--line:#e3ddd3;--accent:#8e1f24;--soft:#f7efee;--bg:#fbfaf7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}
+  a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+  /* 语言切换：body.zh 只显示 .zh，body.en 只显示 .en */
+  body.zh .en,body.en .zh{display:none}
+  nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:.6rem 1rem;font-size:.92rem;z-index:9}
+  nav .in{max-width:800px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline}
+  nav b{margin-right:auto;color:var(--ink)}
+  .lang{margin-left:.5rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .6rem;font-size:.82rem;background:#fff;cursor:pointer;color:var(--ink)}
+  .lang:hover{border-color:var(--accent);color:var(--accent)}
+  main{max-width:800px;margin:0 auto;padding:1.5rem 1rem 3rem}
+  h1{font-size:1.7rem;line-height:1.25;margin:.8rem 0 .3rem}
+  h1 small{display:block;font-size:.55em;font-weight:400;color:var(--muted)}
+  h2{font-size:1.15rem;margin:2.4rem 0 .6rem;padding-bottom:.3rem;border-bottom:2px solid var(--accent)}
+  .meta{color:var(--muted);font-size:.93rem;margin:0 0 1rem}
+  .meta span.i{white-space:nowrap;margin-right:1.2rem}
+  .now{background:var(--soft);border-left:3px solid var(--accent);padding:.6rem .9rem;font-size:.93rem;margin:1rem 0}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th{text-align:left;font-weight:600;padding:.45rem .5rem;border-bottom:2px solid var(--line);white-space:nowrap}
+  td{padding:.5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:#f4f1eb}
+  tr.cur td{background:var(--soft)}
+  td.d{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+  td.ai{color:var(--muted);font-size:.88rem}
+  .wrap{overflow-x:auto}
+  ul{padding-left:1.3rem}li{margin:.25rem 0}
+  .grade{display:flex;gap:.8rem;flex-wrap:wrap;margin:.5rem 0}
+  .grade div{flex:1 1 150px;border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;background:#fff}
+  .grade b{display:block;font-size:1.4rem;color:var(--accent)}
+  footer{max-width:800px;margin:0 auto;padding:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  @media(max-width:600px){nav b{flex-basis:100%}}
+</style>
+</head>
+<body class="zh">
+
+<nav><div class="in">
+  <b>Blockchain · MEM 2026</b>
+  <a href="#schedule"><span class="zh">日程</span><span class="en">Schedule</span></a>
+  <a href="#hw"><span class="zh">作业</span><span class="en">Homework</span></a>
+  <a href="#grading"><span class="zh">考核</span><span class="en">Grading</span></a>
+  <a href="#project"><span class="zh">项目</span><span class="en">Project</span></a>
+  <a href="#books"><span class="zh">教材</span><span class="en">Readings</span></a>
+  <a href="#about"><span class="zh">简介</span><span class="en">About</span></a>
+  <button class="lang" id="langbtn" type="button"><span class="zh">English</span><span class="en">中文</span></button>
+</div></nav>
+
+<main>
+<h1>Blockchain (MEM, Fall 2026)
+  <small><span class="zh">区块链 · 课程号 01716430 · 北京大学软件与微电子学院</span><span class="en">Course 01716430 · School of Software and Microelectronics, Peking University</span></small>
+</h1>
+<p class="meta">
+  <span class="i"><span class="zh">周日 9:00–12:00</span><span class="en">Sundays 9:00–12:00</span></span>
+  <span class="i"><span class="zh">二教 301</span><span class="en">Room 301, Teaching Bldg. 2</span></span>
+  <span class="i"><span class="zh">授课：孙惠平</span><span class="en">Instructor: Huiping Sun</span> <a href="mailto:sunhp@ss.pku.edu.cn">sunhp@ss.pku.edu.cn</a></span>
+  <span class="i"><span class="zh">助教：王若珩</span><span class="en">TA: Ruoheng Wang</span></span>
+</p>
+<p>
+  <span class="zh">从密码学与去中心化网络出发，理解比特币、以太坊、DeFi 与稳定币的技术逻辑和商业含义。每讲附设 30 分钟「AI 研究方法」模块，学习用大模型做文献调研、数据分析与报告写作，并直接用于本课程作业与项目。</span>
+  <span class="en">Starting from cryptography and decentralized networks, this course explains the technical logic and business implications of Bitcoin, Ethereum, DeFi and stablecoins. Each lecture includes a 30-minute "AI for Research" module on using large language models for literature review, data analysis and report writing, applied directly to the course assignments and project.</span>
+</p>
+
+<div class="now" id="now"></div>
+
+<h2 id="schedule"><span class="zh">教学日程</span><span class="en">Schedule</span></h2>
+<div class="wrap">
+<table>
+<thead><tr>
+  <th><span class="zh">日期</span><span class="en">Date</span></th><th>#</th>
+  <th><span class="zh">主题</span><span class="en">Topic</span></th>
+  <th><span class="zh">AI 模块（30 min）</span><span class="en">AI module (30 min)</span></th>
+  <th><span class="zh">材料</span><span class="en">Materials</span></th>
+</tr></thead>
+<tbody id="rows">
+<tr data-d="2026-09-13"><td class="d">09-13</td><td>1</td><td><span class="zh">区块链概念：密码学基础与信任问题</span><span class="en">Blockchain concepts: cryptographic foundations and the trust problem</span></td><td class="ai"><span class="zh">大模型入门与提示工程</span><span class="en">LLM basics and prompt engineering</span></td><td><a href="./class_files/BC202609-01.pdf">Slides</a> · <a href="https://bitcoin.org/bitcoin.pdf"><span class="zh">白皮书</span><span class="en">Whitepaper</span></a></td></tr>
+<tr data-d="2026-09-20"><td class="d">09-20</td><td>2</td><td><span class="zh">去中心化：P2P 网络、拜占庭容错与共识</span><span class="en">Decentralization: P2P networks, Byzantine fault tolerance and consensus</span></td><td class="ai"><span class="zh">AI 文献调研与引用核查</span><span class="en">AI-assisted literature search and citation checking</span></td><td><a href="./class_files/BC202609-02.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-11"><td class="d">10-11</td><td>3</td><td><span class="zh">比特币：UTXO、挖矿与脚本</span><span class="en">Bitcoin: UTXO, mining and Script</span></td><td class="ai"><span class="zh">AI 辅助精读白皮书</span><span class="en">Close reading of the whitepaper with AI</span></td><td><a href="./class_files/BC202609-03.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-18"><td class="d">10-18</td><td>4</td><td><span class="zh">以太坊：账户模型、EVM 与智能合约</span><span class="en">Ethereum: account model, EVM and smart contracts</span></td><td class="ai"><span class="zh">AI 编程助手：生成并审查合约</span><span class="en">AI coding assistants: generating and reviewing contracts</span></td><td><a href="./class_files/BC202609-04.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-25"><td class="d">10-25</td><td>5</td><td><span class="zh">性能与扩展性：Layer2、分片、跨链</span><span class="en">Performance and scalability: Layer 2, sharding, cross-chain</span></td><td class="ai"><span class="zh">AI 数据分析：链上数据可视化</span><span class="en">AI data analysis: visualizing on-chain data</span></td><td><a href="./class_files/BC202609-05.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-01"><td class="d">11-01</td><td>6</td><td><span class="zh">DeFi：借贷、DEX 与协议风险</span><span class="en">DeFi: lending, DEXs and protocol risk</span></td><td class="ai"><span class="zh">AI 风险分析与协议尽调</span><span class="en">AI-assisted risk analysis and protocol due diligence</span></td><td><a href="./class_files/BC202609-06.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-08"><td class="d">11-08</td><td>7</td><td><span class="zh">稳定币与 RWA：机制、脱锚与监管</span><span class="en">Stablecoins and RWA: mechanisms, de-pegging and regulation</span></td><td class="ai"><span class="zh">AI 辅助多国法规比较</span><span class="en">Comparing regulations across jurisdictions with AI</span></td><td><a href="./class_files/BC202609-07.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-15"><td class="d">11-15</td><td>8</td><td><span class="zh">其余平台：联盟链与高性能公链对比</span><span class="en">Other platforms: consortium chains vs. high-performance public chains</span></td><td class="ai"><span class="zh">AI 辅助技术选型矩阵</span><span class="en">AI-assisted technology selection matrix</span></td><td><a href="./class_files/BC202609-08.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-22"><td class="d">11-22</td><td>9</td><td><span class="zh">应用：产业与政务案例</span><span class="en">Applications: industry and government cases</span></td><td class="ai"><span class="zh">AI 辅助商业分析写作</span><span class="en">AI-assisted business analysis writing</span></td><td><a href="./class_files/BC202609-09.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-29"><td class="d">11-29</td><td>10</td><td><span class="zh">前沿：隐私与身份、DAO、AI×区块链、挑战与展望</span><span class="en">Frontiers: privacy and identity, DAOs, AI × blockchain, challenges and outlook</span></td><td class="ai"><span class="zh">AI 科研工作流与学术诚信</span><span class="en">AI research workflow and academic integrity</span></td><td><a href="./class_files/BC202609-10.pdf">Slides</a></td></tr>
+<tr data-d="2026-12-06"><td class="d">12-06</td><td>—</td><td><span class="zh">课程项目答辩</span><span class="en">Project presentations</span></td><td class="ai"></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<p class="meta"><span class="zh">9-27（中秋）、10-04（国庆）停课。</span><span class="en">No class on 09-27 (Mid-Autumn Festival) and 10-04 (National Day).</span></p>
+
+<h2 id="hw"><span class="zh">平时作业</span><span class="en">Homework</span></h2>
+<div class="wrap">
+<table>
+<thead><tr><th>#</th><th><span class="zh">类型</span><span class="en">Type</span></th><th><span class="zh">内容</span><span class="en">Task</span></th><th><span class="zh">截止</span><span class="en">Due</span></th></tr></thead>
+<tbody>
+<tr><td>HW1</td><td><span class="zh">动手实践</span><span class="en">Hands-on</span></td><td><span class="zh">在测试网完成一次转账或部署一个极简智能合约（可用 AI 编程助手），提交交易哈希 + 原理说明</span><span class="en">Make a testnet transfer or deploy a minimal smart contract (AI coding assistants allowed); submit the transaction hash and an explanation of the mechanism</span></td><td class="d">10-25</td></tr>
+<tr><td>HW2</td><td><span class="zh">数据分析</span><span class="en">Data analysis</span></td><td><span class="zh">选一个 DeFi 协议或稳定币，用链上数据做定量分析，图表 + 3 条发现</span><span class="en">Pick a DeFi protocol or stablecoin and analyze it quantitatively with on-chain data; charts plus three findings</span></td><td class="d">11-15</td></tr>
+<tr><td>HW3</td><td><span class="zh">论文批判性综述</span><span class="en">Critical paper review</span></td><td><span class="zh">精读 1–2 篇顶会/期刊论文，写批判性评论（非复述），附 AI 检索过程记录</span><span class="en">Read 1–2 top-venue papers closely and write a critical review (not a summary), with a log of your AI-assisted search process</span></td><td class="d">11-29</td></tr>
+</tbody>
+</table>
+</div>
+<p><span class="zh">所有作业须在末尾附《AI 使用声明》：使用的工具、用于哪些环节、如何核实、发现并纠正的错误。</span><span class="en">Every submission must end with an AI Use Statement: which tools were used, for which steps, how outputs were verified, and which errors were found and corrected.</span></p>
+
+<h2 id="grading"><span class="zh">考核方式</span><span class="en">Grading</span></h2>
+<div class="grade">
+  <div><b>45%</b><span class="zh">三次平时作业</span><span class="en">Three homework assignments</span></div>
+  <div><b>15%</b><span class="zh">AI 方法作业（随 HW 提交的过程记录与声明）</span><span class="en">AI methods (process logs and statements submitted with homework)</span></div>
+  <div><b>40%</b><span class="zh">课程项目：报告 + 答辩</span><span class="en">Course project: report and presentation</span></div>
+</div>
+
+<h2 id="project"><span class="zh">课程项目</span><span class="en">Course Project</span></h2>
+<p>
+  <span class="zh">2–3 人一组，任选其一：① 某区块链应用场景的商业分析报告（含监管与可行性）；② 可运行的原型 Demo；③ AI × 区块链交叉方向调研（Agent 支付、去中心化算力等）。<b>11-01</b> 提交一页纸开题，<b>12-06</b> 答辩。报告须附 AI 使用声明。</span>
+  <span class="en">Teams of 2–3. Choose one: (1) a business analysis report on a blockchain use case, including regulation and feasibility; (2) a working prototype demo; (3) a survey of an AI × blockchain topic such as agent payments or decentralized compute. One-page proposal due <b>11-01</b>; presentations on <b>12-06</b>. Reports must include an AI Use Statement.</span>
+</p>
+
+<h2 id="books"><span class="zh">教材与参考</span><span class="en">Textbook and Readings</span></h2>
+<ul>
+  <li><b><span class="zh">主教材</span><span class="en">Textbook</span></b>: <span class="zh">陈钟、孙惠平，《区块链导论》，人民邮电出版社</span><span class="en">Chen Zhong and Sun Huiping, <i>Introduction to Blockchain</i> (in Chinese), Posts &amp; Telecom Press</span></li>
+  <li><b><span class="zh">配套电子书</span><span class="en">Companion e-book</span></b>: <span class="zh">《从比特币到区块链》网络版第一章（比特币、概念、发展、动手实验、大模型辅助学习）</span><span class="en"><i>From Bitcoin to Blockchain</i>, online edition, Chapter 1 (Bitcoin, concepts, evolution, hands-on labs, learning with LLMs)</span> <a href="./ebook/newbc-01.pdf">PDF</a></li>
+  <li><b><span class="zh">原典</span><span class="en">Primary source</span></b>: Nakamoto, <a href="https://bitcoin.org/bitcoin.pdf">Bitcoin: A Peer-to-Peer Electronic Cash System</a>, 2008</li>
+  <li><span class="zh">进阶</span><span class="en">Further reading</span>: Narayanan et al., <i>Bitcoin and Cryptocurrency Technologies</i> (<a href="https://bitcoinbook.cs.princeton.edu"><span class="zh">免费预印本</span><span class="en">free preprint</span></a>); Antonopoulos, <i>Mastering Bitcoin</i> / <i>Mastering Ethereum</i> (<span class="zh">开源</span><span class="en">open source</span>)</li>
+</ul>
+
+<h2 id="about"><span class="zh">课程简介</span><span class="en">About</span></h2>
+<p>
+  <span class="zh">面向工程管理硕士，兼顾技术原理与管理决策视角。三条线索并行：技术基础（哈希、共识、智能合约）、应用与治理（加密货币、稳定币、DeFi、产业与政务应用、监管合规）、AI 研究方法（提示工程、文献调研、数据分析、AI 辅助写作）。先修要求：无，具备基本编程概念即可。</span>
+  <span class="en">Designed for Master of Engineering Management students, balancing technical principles with a management and decision-making perspective. Three threads run in parallel: technical foundations (hashing, consensus, smart contracts); applications and governance (cryptocurrencies, stablecoins, DeFi, industry and government use, regulation); and AI for research (prompt engineering, literature search, data analysis, AI-assisted writing). No prerequisites beyond basic programming concepts.</span>
+</p>
+</main>
+
+<footer>
+  <span class="zh">历届课程</span><span class="en">Past offerings</span>:
+  <a href="../bc202509/">2025</a> · <a href="../bc202409/">2024</a> · <a href="../bc202309/">2023</a> · <a href="../bc202209/">2022</a> · <a href="../bc202109/">2021</a> · <a href="../bc202009/">2020</a> · <a href="../bc201909/">2019</a> · <a href="../bc201809/">2018</a>
+</footer>
+
+<script>
+(function(){
+  // 语言切换（记住选择）
+  var body=document.body,btn=document.getElementById('langbtn');
+  function setLang(l){body.className=l;document.documentElement.lang=(l==='zh'?'zh-CN':'en');try{localStorage.setItem('lang',l)}catch(e){}renderNow();}
+  btn.onclick=function(){setLang(body.className==='zh'?'en':'zh');};
+  var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+  if(saved==='en'||saved==='zh'){body.className=saved;document.documentElement.lang=(saved==='zh'?'zh-CN':'en');}
+
+  // 下次上课
+  var rows=document.querySelectorAll('#rows tr'),next=null,idx=-1,today=new Date();today.setHours(0,0,0,0);
+  for(var i=0;i<rows.length;i++){if(new Date(rows[i].dataset.d+'T00:00:00')>=today){next=rows[i];idx=i;break;}}
+  if(next){next.classList.add('cur');next.id='r'+idx;}
+  function renderNow(){
+    var box=document.getElementById('now'),zh=body.className==='zh';
+    if(!next){box.innerHTML=zh?'<b>本学期课程已结束。</b>':'<b>This semester has ended.</b>';return;}
+    var c=next.children,sel='.'+body.className,t=function(td){var s=td.querySelector(sel);return s?s.textContent:td.textContent;};
+    box.innerHTML='<b>'+(zh?'下次上课':'Next class')+'</b> '+c[0].textContent+' · '+t(c[2])+(t(c[3])?' · '+(zh?'AI 模块：':'AI module: ')+t(c[3]):'')+' · <a href="#'+next.id+'">'+(zh?'查看材料':'materials')+'</a>';
+  }
+  renderNow();
+})();
+</script>
+</body>
+</html>
