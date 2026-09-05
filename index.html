@@ -1,285 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Huiping Sun · Peking University</title>
-<meta name="description" content="Huiping Sun, Lecturer, School of Software and Microelectronics, Peking University. Blockchain, FinTech, LLM Agent and Identity Management.">
+<title>Blockchain (MEM, Fall 2026) · 01716430</title>
 <style>
-  :root{--ink:#26211d;--muted:#6b625a;--line:#e3ddd3;--accent:#8e1f24;--soft:#f7efee;--bg:#fbfaf7;--blue:#2b5f8c;--gold:#a07a2c;--green:#3e7c4a}
+  :root{--ink:#26211d;--muted:#6b625a;--line:#e3ddd3;--accent:#8e1f24;--soft:#f7efee;--bg:#fbfaf7}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,"Segoe UI","PingFang SC","Noto Sans SC",sans-serif}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}
   a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+  body.zh .en,body.en .zh{display:none}
   nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:.6rem 1rem;font-size:.92rem;z-index:9}
-  nav .in{max-width:860px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline}
+  nav .in{max-width:800px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;align-items:baseline}
   nav b{margin-right:auto;color:var(--ink)}
-  main{max-width:860px;margin:0 auto;padding:1.5rem 1rem 3rem}
-  /* 简介：左图右文，各占 1/2 */
-  header{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:stretch;margin:1rem 0 .5rem}
-  header img{width:100%;height:100%;min-height:300px;object-fit:cover;border-radius:8px;display:block}
-  header .txt{display:flex;flex-direction:column;justify-content:center}
-  .aff{margin:.2rem 0 .9rem;color:var(--muted);line-height:1.45}
-  .aff a{color:var(--muted)}
-  .icons{display:flex;justify-content:center;gap:1.1rem;margin-top:.7rem}
-  .icons a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink)}
-  .icons a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
-  .icons svg{width:19px;height:19px;fill:currentColor}
-  h1{font-size:1.8rem;line-height:1.2;margin:0 0 .2rem}
+  .lang{margin-left:.5rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .6rem;font-size:.82rem;background:#fff;cursor:pointer;color:var(--ink)}
+  .lang:hover{border-color:var(--accent);color:var(--accent)}
+  main{max-width:800px;margin:0 auto;padding:1.5rem 1rem 3rem}
+  h1{font-size:1.7rem;line-height:1.25;margin:.8rem 0 .3rem}
   h1 small{display:block;font-size:.55em;font-weight:400;color:var(--muted)}
   h2{font-size:1.15rem;margin:2.4rem 0 .6rem;padding-bottom:.3rem;border-bottom:2px solid var(--accent)}
-  h3{font-size:.95rem;margin:1.2rem 0 .3rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-  p{margin:.5rem 0}
-  /* Research：文字在上，示意图在下 */
-  .research svg{width:100%;height:auto;display:block;margin:1rem 0 .5rem}
-  .kw{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0}
-  .kw span{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.05rem .65rem;font-size:.85rem}
-  ul{padding-left:1.2rem;margin:.3rem 0}li{margin:.3rem 0}
-  ul.pub li{margin:.55rem 0}
-  .pub .t{font-weight:600}.pub .a{color:var(--muted)}.pub .v{font-size:.92rem}
-  .pub .l a{font-size:.85rem;margin-right:.5rem}
-  .year{font-family:ui-monospace,Menlo,monospace;font-size:.85rem;color:var(--accent);margin:.9rem 0 .2rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.4rem 1rem;font-size:.93rem}
-  .grid span b{font-weight:600}
-  .grid span i{color:var(--muted);font-style:normal;font-size:.88rem}
-  details{border:1px solid var(--line);border-radius:6px;background:#fff;padding:.4rem .9rem;margin:.6rem 0}
-  summary{cursor:pointer;font-weight:600}
-  details .grid{margin:.6rem 0 .3rem}
-  .note{background:var(--soft);border-left:3px solid var(--accent);padding:.6rem .9rem;font-size:.93rem;margin:.8rem 0}
-  footer{max-width:860px;margin:0 auto;padding:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
-  @media(max-width:640px){header,.research{grid-template-columns:1fr}header img{max-width:220px;margin:0 auto}nav b{flex-basis:100%}}
+  .meta{color:var(--muted);font-size:.93rem;margin:0 0 1rem}
+  .meta span.i{white-space:nowrap;margin-right:1.2rem}
+  .ic{display:inline-block;vertical-align:-4px;width:18px;height:18px;margin-left:.25rem;color:var(--accent)}
+  .ic svg{width:18px;height:18px;display:block}
+  .map{margin:1.2rem 0 .4rem}.map svg{width:100%;height:auto;display:block}
+  .map .t{font:600 11.5px -apple-system,"PingFang SC","Noto Sans SC",sans-serif;fill:#26211d}
+  .map .n{font:700 11px ui-monospace,Menlo,monospace;fill:#8e1f24}
+  .map .g{font:600 12px -apple-system,"PingFang SC","Noto Sans SC",sans-serif}
+  .map .m{font:11px -apple-system,"PingFang SC","Noto Sans SC",sans-serif;fill:#6b625a}
+  .map .lab{font:11px -apple-system,"PingFang SC","Noto Sans SC",sans-serif;fill:#8e1f24;font-weight:600}
+  .now{background:var(--soft);border-left:3px solid var(--accent);padding:.6rem .9rem;font-size:.93rem;margin:1rem 0}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th{text-align:left;font-weight:600;padding:.45rem .5rem;border-bottom:2px solid var(--line);white-space:nowrap}
+  td{padding:.5rem;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:#f4f1eb}
+  tr.cur td{background:var(--soft)}
+  td.d{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+  td.ai{color:var(--muted);font-size:.88rem;white-space:nowrap}
+  .wrap{overflow-x:auto}
+  ul{padding-left:1.3rem}li{margin:.25rem 0}
+  .grade{display:flex;gap:.8rem;flex-wrap:wrap;margin:.5rem 0}
+  .grade div{flex:1 1 150px;border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;background:#fff}
+  .grade b{display:block;font-size:1.4rem;color:var(--accent)}
+  footer{max-width:800px;margin:0 auto;padding:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  @media(max-width:600px){nav b{flex-basis:100%}}
 </style>
 </head>
-<body>
+<body class="zh">
 
 <nav><div class="in">
-  <b>Huiping Sun</b>
-  <a href="#research">Research</a><a href="#teaching">Teaching</a><a href="#publications">Publications</a>
-  <a href="#students">Students</a><a href="#service">Service</a><a href="#contact">Contact</a>
+  <b>Blockchain · MEM 2026</b>
+  <a href="#schedule"><span class="zh">日程</span><span class="en">Schedule</span></a>
+  <a href="#hw"><span class="zh">作业</span><span class="en">Homework</span></a>
+  <a href="#grading"><span class="zh">考核</span><span class="en">Grading</span></a>
+  <a href="#project"><span class="zh">项目</span><span class="en">Project</span></a>
+  <a href="#books"><span class="zh">教材</span><span class="en">Readings</span></a>
+  <button class="lang" id="langbtn" type="button"><span class="zh">English</span><span class="en">中文</span></button>
 </div></nav>
 
 <main>
-<header>
-  <div>
-    <img src="./images/sun.jpg" alt="Huiping Sun">
-    <div class="icons">
-      <a href="mailto:sunhp@ss.pku.edu.cn" title="Email: sunhp@ss.pku.edu.cn" aria-label="Email">
-        <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2 6l10 7 10-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-      </a>
-      <a href="https://scholar.google.com/citations?user=qbLDv5UAAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar">
-        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3z"/><path d="M5 13.5V17c0 1.7 3.1 3.5 7 3.5s7-1.8 7-3.5v-3.5l-7 3.8-7-3.8z"/></svg>
-      </a>
-      <a href="https://dblp.org/pid/21/2520" title="DBLP" aria-label="DBLP">
-        <svg viewBox="0 0 24 24"><text x="12" y="16.5" text-anchor="middle" font-size="9.5" font-weight="700" font-family="ui-monospace,Menlo,monospace" fill="currentColor">dblp</text></svg>
-      </a>
-    </div>
-  </div>
-  <div class="txt">
-    <h1>Huiping Sun</h1>
-    <p class="aff"><a href="http://infosec.pku.edu.cn">Information Security Laboratory</a><br><a href="http://www.ss.pku.edu.cn/">School of Software and Microelectronics</a><br><a href="http://www.pku.edu.cn">Peking University</a></p>
-    <p>I am a Lecturer in the Department of Information Security, School of Software and Microelectronics, Peking University (PKU). I am a member of the <a href="http://infosec.pku.edu.cn">Information Security Laboratory</a> and the <a href="http://brc.pku.edu.cn">Blockchain Research Center</a> at PKU.</p>
-    <p>My research explores Blockchain, FinTech, LLM Agent and Identity Management, with current focus on BFT and its accountability, PCN, Agent Memory, AuthN, AuthZ and Audit.</p>
-  </div>
-</header>
+<h1>Blockchain (MEM, Fall 2026)
+  <small><span class="zh">区块链 · 课程号 01716430 · 北京大学软件与微电子学院</span><span class="en">Course 01716430 · School of Software and Microelectronics, Peking University</span></small>
+</h1>
+<p class="meta">
+  <span class="i"><span class="zh">周日 9:00–12:00</span><span class="en">Sundays 9:00–12:00</span></span>
+  <span class="i"><span class="zh">二教 301</span><span class="en">Room 301, Teaching Bldg. 2</span></span>
+  <span class="i"><span class="zh">授课：孙惠平</span><span class="en">Instructor: Huiping Sun</span>
+    <a class="ic" href="https://huipingsun.github.io/" title="Homepage" aria-label="Homepage"><svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10.5V20h13v-9.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.9"/></svg></a>
+    <a class="ic" href="mailto:sunhp@ss.pku.edu.cn" title="sunhp@ss.pku.edu.cn" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2.5 5.5h19v13h-19z" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M2.5 6.5l9.5 7 9.5-7" fill="none" stroke="currentColor" stroke-width="1.9"/></svg></a></span>
+  <span class="i"><span class="zh">助教：王若珩</span><span class="en">TA: Ruoheng Wang</span></span>
+</p>
+<p>
+  <span class="zh">本课程面向工程管理硕士，兼顾技术原理与管理决策视角，系统讲解区块链的技术基础与应用全景：从哈希、共识、去中心化网络出发，理解比特币与以太坊的运行机制；进而讨论性能与扩展性、DeFi、稳定币与真实世界资产、联盟链与高性能公链，以及产业与政务应用、监管合规和 AI × 区块链等前沿方向。</span>
+  <span class="en">Designed for Master of Engineering Management students, this course balances technical principles with a management and decision-making perspective. It covers blockchain from the ground up: hashing, consensus and decentralized networks; how Bitcoin and Ethereum work; then performance and scalability, DeFi, stablecoins and real-world assets, consortium and high-performance chains, industry and government applications, regulation, and frontier topics such as AI × blockchain.</span>
+</p>
+<p>
+  <span class="zh">课程共十讲加一次项目答辩。每讲三小时，附设 20–30 分钟「大模型研究方法」模块，依次介绍大模型原理、文献调研与阅读、编程与数据分析辅助、报告与论文撰写等方法，并直接用于本课程的作业与项目。平时三次作业分别对应动手实践、数据分析与论文综述；课程项目以小组形式完成，期末答辩。</span>
+  <span class="en">The course runs ten lectures plus a final project session. Each three-hour lecture includes a 20–30 minute "LLM for Research" module — covering how large language models work, literature search and reading, coding and data-analysis assistance, and report and paper writing — applied directly to the course assignments and project. Three homework assignments cover hands-on practice, data analysis and a paper review; the course project is done in teams and presented at the end of term.</span>
+</p>
 
-<h2 id="research">Research</h2>
-<div class="research">
-  <p>My work asks how untrusting parties can share a ledger, and how the systems and agents built on it can be held accountable. It has moved through four connected stages, each raising the question the previous one could not answer: identity management asked who may act and how actions are audited; BFT asked how nodes agree and how a misbehaving node is exposed; blockchain asked how that agreement scales across shards and payment channels; and the LLM agent now asks how an agent's memory can be evicted and audited so that its behaviour is trusted and traceable on the same infrastructure.</p>
+<div class="now" id="now"></div>
 
-  <!-- 四个方向并列，箭头表示逐渐推进；每框上方一个小示意 -->
-  <svg viewBox="0 0 860 210" role="img" aria-label="Research map: Identity, BFT, Blockchain, LLM Agent">
-    <defs><style>
-      .ti{font:700 14px -apple-system,"Segoe UI",sans-serif;fill:#26211d}
-      .it{font:11.5px -apple-system,"Segoe UI",sans-serif;fill:#6b625a}
-      .ar{stroke:#8e1f24;stroke-width:2;fill:none;marker-end:url(#ah)}
-      .sk{fill:none;stroke-width:1.6}
-    </style>
-    <marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8e1f24"/></marker></defs>
+<div class="map"><svg viewBox="0 0 786 212" role="img" aria-label="Course roadmap">
+<path d="M6 30v-8h150v8" fill="none" stroke="#a07a2c" stroke-width="1.5"/>
+<text class="g zh" x="81.0" y="14" text-anchor="middle" fill="#a07a2c">基础</text><text class="g en" x="81.0" y="14" text-anchor="middle" fill="#a07a2c">Foundations</text>
+<rect x="6" y="42" width="72" height="62" rx="7" fill="#f6f1e6" stroke="#a07a2c" stroke-width="1.4"/>
+<text class="n" x="14" y="59">01</text>
+<text class="t zh" x="42.0" y="85" text-anchor="middle">区块链</text><text class="t en" x="42.0" y="85" text-anchor="middle">Blockchain</text>
+<rect x="84" y="42" width="72" height="62" rx="7" fill="#f6f1e6" stroke="#a07a2c" stroke-width="1.4"/>
+<text class="n" x="92" y="59">02</text>
+<text class="t zh" x="120.0" y="85" text-anchor="middle">去中心化</text><text class="t en" x="120.0" y="85" text-anchor="middle">Decentral.</text>
+<path d="M162 30v-8h228v8" fill="none" stroke="#2b5f8c" stroke-width="1.5"/>
+<text class="g zh" x="276.0" y="14" text-anchor="middle" fill="#2b5f8c">平台</text><text class="g en" x="276.0" y="14" text-anchor="middle" fill="#2b5f8c">Platforms</text>
+<rect x="162" y="42" width="72" height="62" rx="7" fill="#eef3f8" stroke="#2b5f8c" stroke-width="1.4"/>
+<text class="n" x="170" y="59">03</text>
+<text class="t zh" x="198.0" y="85" text-anchor="middle">比特币</text><text class="t en" x="198.0" y="85" text-anchor="middle">Bitcoin</text>
+<rect x="240" y="42" width="72" height="62" rx="7" fill="#eef3f8" stroke="#2b5f8c" stroke-width="1.4"/>
+<text class="n" x="248" y="59">04</text>
+<text class="t zh" x="276.0" y="85" text-anchor="middle">以太坊</text><text class="t en" x="276.0" y="85" text-anchor="middle">Ethereum</text>
+<rect x="318" y="42" width="72" height="62" rx="7" fill="#eef3f8" stroke="#2b5f8c" stroke-width="1.4"/>
+<text class="n" x="326" y="59">05</text>
+<text class="t zh" x="354.0" y="85" text-anchor="middle">性能扩展</text><text class="t en" x="354.0" y="85" text-anchor="middle">Scaling</text>
+<path d="M396 30v-8h150v8" fill="none" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="g zh" x="471.0" y="14" text-anchor="middle" fill="#8e1f24">金融</text><text class="g en" x="471.0" y="14" text-anchor="middle" fill="#8e1f24">Finance</text>
+<rect x="396" y="42" width="72" height="62" rx="7" fill="#f7efee" stroke="#8e1f24" stroke-width="1.4"/>
+<text class="n" x="404" y="59">06</text>
+<text class="t zh" x="432.0" y="85" text-anchor="middle">DeFi</text><text class="t en" x="432.0" y="85" text-anchor="middle">DeFi</text>
+<rect x="474" y="42" width="72" height="62" rx="7" fill="#f7efee" stroke="#8e1f24" stroke-width="1.4"/>
+<text class="n" x="482" y="59">07</text>
+<text class="t zh" x="510.0" y="85" text-anchor="middle">稳定币 RWA</text><text class="t en" x="510.0" y="85" text-anchor="middle">Stablecoins</text>
+<path d="M552 30v-8h72v8" fill="none" stroke="#2b5f8c" stroke-width="1.5"/>
+<text class="g zh" x="588.0" y="14" text-anchor="middle" fill="#2b5f8c">平台</text><text class="g en" x="588.0" y="14" text-anchor="middle" fill="#2b5f8c">Platforms</text>
+<rect x="552" y="42" width="72" height="62" rx="7" fill="#eef3f8" stroke="#2b5f8c" stroke-width="1.4"/>
+<text class="n" x="560" y="59">08</text>
+<text class="t zh" x="588.0" y="85" text-anchor="middle">其余平台</text><text class="t en" x="588.0" y="85" text-anchor="middle">Platforms</text>
+<path d="M630 30v-8h150v8" fill="none" stroke="#3e7c4a" stroke-width="1.5"/>
+<text class="g zh" x="705.0" y="14" text-anchor="middle" fill="#3e7c4a">应用与前沿</text><text class="g en" x="705.0" y="14" text-anchor="middle" fill="#3e7c4a">Apps &amp; Frontiers</text>
+<rect x="630" y="42" width="72" height="62" rx="7" fill="#edf4ee" stroke="#3e7c4a" stroke-width="1.4"/>
+<text class="n" x="638" y="59">09</text>
+<text class="t zh" x="666.0" y="85" text-anchor="middle">应用</text><text class="t en" x="666.0" y="85" text-anchor="middle">Applications</text>
+<rect x="708" y="42" width="72" height="62" rx="7" fill="#edf4ee" stroke="#3e7c4a" stroke-width="1.4"/>
+<text class="n" x="716" y="59">10</text>
+<text class="t zh" x="744.0" y="85" text-anchor="middle">前沿</text><text class="t en" x="744.0" y="85" text-anchor="middle">Frontiers</text>
+<path d="M78 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M156 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M234 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M312 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M390 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M468 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M546 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M624 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<path d="M702 73h6" stroke="#c9c1b6" stroke-width="1.5"/>
+<text class="lab zh" x="6" y="138">大模型研究方法模块（每讲 20–30 分钟）</text><text class="lab en" x="6" y="138">LLM-for-research module (20–30 min per lecture)</text>
+<path d="M42.0 176H744.0" stroke="#8e1f24" stroke-width="1.5" marker-end="url(#ma)"/>
+<defs><marker id="ma" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7z" fill="#8e1f24"/></marker></defs>
+<circle cx="42.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="42.0" y="163" text-anchor="middle">原理</text><text class="m en" x="42.0" y="163" text-anchor="middle">Basics</text>
+<circle cx="120.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="120.0" y="163" text-anchor="middle">调研</text><text class="m en" x="120.0" y="163" text-anchor="middle">Search</text>
+<circle cx="198.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="198.0" y="163" text-anchor="middle">阅读</text><text class="m en" x="198.0" y="163" text-anchor="middle">Reading</text>
+<circle cx="276.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="276.0" y="163" text-anchor="middle">编程</text><text class="m en" x="276.0" y="163" text-anchor="middle">Coding</text>
+<circle cx="354.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="354.0" y="163" text-anchor="middle">分析</text><text class="m en" x="354.0" y="163" text-anchor="middle">Data</text>
+<circle cx="432.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="432.0" y="163" text-anchor="middle">报告</text><text class="m en" x="432.0" y="163" text-anchor="middle">Report</text>
+<circle cx="510.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="510.0" y="163" text-anchor="middle">选题</text><text class="m en" x="510.0" y="163" text-anchor="middle">Topic</text>
+<circle cx="588.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="588.0" y="163" text-anchor="middle">研究</text><text class="m en" x="588.0" y="163" text-anchor="middle">Research</text>
+<circle cx="666.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="666.0" y="163" text-anchor="middle">论文</text><text class="m en" x="666.0" y="163" text-anchor="middle">Paper</text>
+<circle cx="744.0" cy="176" r="4" fill="#fff" stroke="#8e1f24" stroke-width="1.5"/>
+<text class="m zh" x="744.0" y="163" text-anchor="middle">讲稿</text><text class="m en" x="744.0" y="163" text-anchor="middle">Talk</text>
+<text class="m zh" x="6" y="203">从理解原理到独立完成研究：文献 → 编程与数据 → 写作与表达</text><text class="m en" x="6" y="203">From understanding LLMs to doing research: literature → code &amp; data → writing &amp; presenting</text>
+</svg></div>
 
-    <!-- 1 Identity -->
-    <rect x="10" y="60" width="190" height="140" rx="8" fill="#f6f1e6" stroke="#a07a2c" stroke-width="1.5"/>
-    <g transform="translate(105,32)">  <!-- 示意：用户-锁-审计勾 -->
-      <circle cx="-24" cy="-2" r="6" class="sk" stroke="#a07a2c"/><path d="M-34 14c0-7 20-7 20 0" class="sk" stroke="#a07a2c"/>
-      <rect x="-6" y="-2" width="14" height="12" rx="2" class="sk" stroke="#a07a2c"/><path d="M-3 -2v-4a4 4 0 0 1 8 0v4" class="sk" stroke="#a07a2c"/>
-      <path d="M16 4l5 5 9-11" class="sk" stroke="#a07a2c"/>
-    </g>
-    <text x="22" y="88" class="ti">Identity Mgmt</text>
-    <text x="22" y="112" class="it">AuthN · AuthZ</text>
-    <text x="22" y="132" class="it">Data Audit</text>
-    <text x="22" y="152" class="it">Credit Scoring</text>
+<h2 id="schedule"><span class="zh">教学日程</span><span class="en">Schedule</span></h2>
+<div class="wrap">
+<table>
+<thead><tr>
+  <th><span class="zh">日期</span><span class="en">Date</span></th><th>#</th>
+  <th><span class="zh">主题</span><span class="en">Topic</span></th>
+  <th><span class="zh">大模型模块</span><span class="en">LLM module</span></th>
+  <th><span class="zh">材料</span><span class="en">Materials</span></th>
+</tr></thead>
+<tbody id="rows">
+<tr data-d="2026-09-13"><td class="d">09-13</td><td>1</td><td><span class="zh">区块链：历史、概念与发展</span><span class="en">Blockchain: history, concepts and evolution</span></td><td class="ai"><span class="zh">原理简介</span><span class="en">How LLMs work</span></td><td><a href="./class_files/BC202609-01.pdf">Slides</a></td></tr>
+<tr data-d="2026-09-20"><td class="d">09-20</td><td>2</td><td><span class="zh">去中心化：社会、网络、密码、共识</span><span class="en">Decentralization: society, networks, cryptography, consensus</span></td><td class="ai"><span class="zh">文献调研</span><span class="en">Literature search</span></td><td><a href="./class_files/BC202609-02.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-11"><td class="d">10-11</td><td>3</td><td><span class="zh">比特币：地址、UTXO、PoW、挖矿</span><span class="en">Bitcoin: addresses, UTXO, PoW, mining</span></td><td class="ai"><span class="zh">文献阅读</span><span class="en">Paper reading</span></td><td><a href="./class_files/BC202609-03.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-18"><td class="d">10-18</td><td>4</td><td><span class="zh">以太坊：账户、PoS、EVM、合约</span><span class="en">Ethereum: accounts, PoS, EVM, smart contracts</span></td><td class="ai"><span class="zh">编程辅助</span><span class="en">Coding assistance</span></td><td><a href="./class_files/BC202609-04.pdf">Slides</a></td></tr>
+<tr data-d="2026-10-25"><td class="d">10-25</td><td>5</td><td><span class="zh">性能与扩展性：Layer2、分片、PCN</span><span class="en">Performance and scalability: Layer 2, sharding, PCN</span></td><td class="ai"><span class="zh">数据分析</span><span class="en">Data analysis</span></td><td><a href="./class_files/BC202609-05.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-01"><td class="d">11-01</td><td>6</td><td><span class="zh">DeFi：借贷、DEX、协议、风险</span><span class="en">DeFi: lending, DEXs, protocols, risk</span></td><td class="ai"><span class="zh">撰写报告</span><span class="en">Report writing</span></td><td><a href="./class_files/BC202609-06.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-08"><td class="d">11-08</td><td>7</td><td><span class="zh">稳定币与 RWA：机制、脱锚、监管</span><span class="en">Stablecoins and RWA: mechanisms, de-pegging, regulation</span></td><td class="ai"><span class="zh">论文选题</span><span class="en">Choosing a research topic</span></td><td><a href="./class_files/BC202609-07.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-15"><td class="d">11-15</td><td>8</td><td><span class="zh">其余平台：联盟链、Solana、Sui</span><span class="en">Other platforms: consortium chains, Solana, Sui</span></td><td class="ai"><span class="zh">研究辅助</span><span class="en">Research assistance</span></td><td><a href="./class_files/BC202609-08.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-22"><td class="d">11-22</td><td>9</td><td><span class="zh">应用：产业与政务案例</span><span class="en">Applications: industry and government cases</span></td><td class="ai"><span class="zh">论文撰写</span><span class="en">Paper writing</span></td><td><a href="./class_files/BC202609-09.pdf">Slides</a></td></tr>
+<tr data-d="2026-11-29"><td class="d">11-29</td><td>10</td><td><span class="zh">前沿：隐私、身份、DAO、AI×区块链、展望</span><span class="en">Frontiers: privacy, identity, DAOs, AI × blockchain, outlook</span></td><td class="ai"><span class="zh">讲稿撰写</span><span class="en">Presentation writing</span></td><td><a href="./class_files/BC202609-10.pdf">Slides</a></td></tr>
+<tr data-d="2026-12-06"><td class="d">12-06</td><td>—</td><td><span class="zh">课程项目答辩</span><span class="en">Project presentations</span></td><td class="ai"></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<p class="meta"><span class="zh">9-27（中秋）、10-04（国庆）停课。</span><span class="en">No class on 09-27 (Mid-Autumn Festival) and 10-04 (National Day).</span></p>
 
-    <path d="M203 130H227" class="ar"/>
-
-    <!-- 2 BFT -->
-    <rect x="230" y="60" width="190" height="140" rx="8" fill="#f7efee" stroke="#8e1f24" stroke-width="1.5"/>
-    <g transform="translate(325,32)">  <!-- 示意：多节点投票，一节点标红 -->
-      <circle cx="-30" cy="0" r="6" class="sk" stroke="#8e1f24"/><circle cx="-10" cy="-10" r="6" class="sk" stroke="#8e1f24"/>
-      <circle cx="10" cy="-10" r="6" class="sk" stroke="#8e1f24"/><circle cx="30" cy="0" r="6" fill="#8e1f24" stroke="#8e1f24" class="sk"/>
-      <path d="M-24 0h48M-10 -4l0 4M10 -4l0 4" class="sk" stroke="#8e1f24"/>
-    </g>
-    <text x="242" y="88" class="ti">BFT</text>
-    <text x="242" y="112" class="it">TEE-based BFT</text>
-    <text x="242" y="132" class="it">Security &amp; Liveness</text>
-    <text x="242" y="152" class="it">Accountability</text>
-
-    <path d="M423 130H447" class="ar"/>
-
-    <!-- 3 Blockchain -->
-    <rect x="450" y="60" width="190" height="140" rx="8" fill="#eef3f8" stroke="#2b5f8c" stroke-width="1.5"/>
-    <g transform="translate(545,32)">  <!-- 示意：三个区块链式相连 -->
-      <rect x="-40" y="-8" width="20" height="16" rx="2" class="sk" stroke="#2b5f8c"/>
-      <rect x="-10" y="-8" width="20" height="16" rx="2" class="sk" stroke="#2b5f8c"/>
-      <rect x="20" y="-8" width="20" height="16" rx="2" class="sk" stroke="#2b5f8c"/>
-      <path d="M-20 0h10M10 0h10" class="sk" stroke="#2b5f8c"/>
-    </g>
-    <text x="462" y="88" class="ti">Blockchain</text>
-    <text x="462" y="112" class="it">Consensus</text>
-    <text x="462" y="132" class="it">Sharding</text>
-    <text x="462" y="152" class="it">PCN</text>
-
-    <path d="M643 130H667" class="ar"/>
-
-    <!-- 4 Agent -->
-    <rect x="670" y="60" width="190" height="140" rx="8" fill="#edf4ee" stroke="#3e7c4a" stroke-width="1.5"/>
-    <g transform="translate(765,32)">  <!-- 示意：智能体 + 记忆条 + 审计 -->
-      <rect x="-36" y="-10" width="22" height="20" rx="4" class="sk" stroke="#3e7c4a"/><circle cx="-29" cy="-2" r="1.6" fill="#3e7c4a"/><circle cx="-21" cy="-2" r="1.6" fill="#3e7c4a"/>
-      <path d="M-4 -8h30M-4 0h30M-4 8h18" class="sk" stroke="#3e7c4a"/>
-      <path d="M30 8l4 4 7-8" class="sk" stroke="#3e7c4a"/>
-    </g>
-    <text x="682" y="88" class="ti">LLM Agent</text>
-    <text x="682" y="112" class="it">Memory Eviction</text>
-    <text x="682" y="132" class="it">Memory Audit</text>
-  </svg>
-  <h3>Current projects</h3>
-  <ul>
-    <li>BFT Security and Liveness Accountability</li>
-    <li>PCN Model and Pooling</li>
-    <li>Agent Memory Eviction and Audit</li>
-  </ul>
-  <div class="note">I mainly work on Blockchain, PCN, BFT, Identity, FinTech and Agent Memory. If you are interested or have any questions, please <a href="mailto:sunhp@ss.pku.edu.cn">email me</a>.</div>
+<h2 id="hw"><span class="zh">平时作业</span><span class="en">Homework</span></h2>
+<div class="wrap">
+<table>
+<thead><tr><th>#</th><th><span class="zh">类型</span><span class="en">Type</span></th><th><span class="zh">内容</span><span class="en">Task</span></th><th><span class="zh">截止</span><span class="en">Due</span></th></tr></thead>
+<tbody>
+<tr><td>HW1</td><td><span class="zh">动手实践</span><span class="en">Hands-on</span></td><td><span class="zh">在测试网完成一次转账或部署一个极简智能合约（可用 AI 编程助手），提交交易哈希 + 原理说明</span><span class="en">Make a testnet transfer or deploy a minimal smart contract (AI coding assistants allowed); submit the transaction hash and an explanation of the mechanism</span></td><td class="d">10-25</td></tr>
+<tr><td>HW2</td><td><span class="zh">数据分析</span><span class="en">Data analysis</span></td><td><span class="zh">选一个 DeFi 协议或稳定币，用链上数据做定量分析，图表 + 3 条发现</span><span class="en">Pick a DeFi protocol or stablecoin and analyze it quantitatively with on-chain data; charts plus three findings</span></td><td class="d">11-15</td></tr>
+<tr><td>HW3</td><td><span class="zh">论文批判性综述</span><span class="en">Critical paper review</span></td><td><span class="zh">精读 1–2 篇顶会/期刊论文，写批判性评论（非复述），附 AI 检索过程记录</span><span class="en">Read 1–2 top-venue papers closely and write a critical review (not a summary), with a log of your AI-assisted search process</span></td><td class="d">11-29</td></tr>
+</tbody>
+</table>
 </div>
 
-<h2 id="teaching">Teaching</h2>
-<ul>
-  <li><a href="https://huipingsun.github.io/bc202609/">Blockchain</a> — MEM, Fall 2026</li>
-  <li><a href="https://huipingsun.github.io/bct202603/">Blockchain Technology and Applications</a> — Spring 2026</li>
-  <li><a href="https://huipingsun.github.io/bdf202702/">Blockchain and Digital Finance</a> — FinTech, Spring 2027</li>
-  <li><a href="https://huipingsun.github.io/dtcp202702/">Distributed Trust and Consensus Practice</a> — Spring 2027</li>
-</ul>
-
-<h2 id="publications">Publications</h2>
-<p style="color:var(--muted);font-size:.92rem">Selected. Full list on <a href="https://dblp.org/pid/21/2520">DBLP</a> and <a href="https://scholar.google.com/citations?user=qbLDv5UAAAAJ&hl=en">Google Scholar</a>.</p>
-
-<div class="year">2026</div>
-<ul class="pub">
-  <li><span class="t">GALUPA: Gossiping Aggregated Locking and Output Proofs for Accountability in BFT.</span> <span class="a">Baolin Li, Huiping Sun, Zhong Chen.</span> <span class="v">IEEE ICDCS 2026.</span> <span class="l"><a href="https://ieeexplore.ieee.org/document/11618994/">Paper</a><a href="https://icdcs2026.icdcs.org">Conference</a></span></li>
-  <li><span class="t">EHRAuditChain: Scalable Privacy-Preserving EHR Audit with RSA Accumulators on Blockchain.</span> <span class="a">Wei Zhu, Meiyun Zuo, Huiping Sun.</span> <span class="v">Information Sciences, 2026.</span> <span class="l"><a href="https://doi.org/10.1016/j.ins.2026.123109">Paper</a></span></li>
-</ul>
-<div class="year">2025</div>
-<ul class="pub">
-  <li><span class="t">Introduction to Blockchain（区块链导论）.</span> <span class="a">Zhong Chen, Huiping Sun.</span> <span class="v">People's Posts and Telecommunications Press, 2025 (textbook, in Chinese).</span> <span class="l"><a href="https://www.ryjiaoyu.com/book/details/46476">Book</a></span></li>
-</ul>
-<div class="year">2024</div>
-<ul class="pub">
-  <li><span class="t">CFAuditChain: Audit BlockChain Based on Cuckoo Filter.</span> <span class="a">Kang Liu, Yang Lu, Shiyi Tan, Wei Liang, Huiping Sun, Zhong Chen.</span> <span class="v">The Computer Journal, 2024.</span> <span class="l"><a href="https://doi.org/10.1093/comjnl/bxad133">Paper</a></span></li>
-  <li><span class="t">Survey on BFT Accountability Mechanisms.</span> <span class="a">Huiping Sun, Jinjue Zhou, Shuxuan Liu, Zhong Chen.</span> <span class="v">Netinfo Security 24(1), 2024 (in Chinese).</span> <span class="l"><a href="http://netinfo-security.org/CN/10.3969/j.issn.1671-1122.2024.01.002">Paper</a></span></li>
-</ul>
-<div class="year">2022</div>
-<ul class="pub">
-  <li><span class="t">ESUM: An Efficient UTXO Schedule Model.</span> <span class="a">Meilin Lv, Kangjian Wei, Henry Kao, Huiping Sun, Zhong Chen.</span> <span class="v">IEEE ICBC 2022.</span> <span class="l"><a href="https://ieeexplore.ieee.org/abstract/document/9805558">Paper</a></span></li>
-  <li><span class="t">DPLogChain: A Dynamic Packaging LogChain based on Random Witness.</span> <span class="a">Shiyi Tan, Yang Lu, Kang Liu, Huiping Sun, Zhong Chen.</span> <span class="v">IEEE ICC 2022.</span> <span class="l"><a href="https://ieeexplore.ieee.org/abstract/document/9838623">Paper</a></span></li>
-</ul>
-<div class="year">2021</div>
-<ul class="pub">
-  <li><span class="t">Lattice BERT for Spoken Language Understanding.</span> <span class="a">Ye Zou, Huiping Sun, Zhong Chen.</span> <span class="v">ICONIP 2021.</span> <span class="l"><a href="https://link.springer.com/chapter/10.1007/978-3-030-92310-5_67">Paper</a></span></li>
-  <li><span class="t">OverlapShard: Overlap-based Sharding Mechanism.</span> <span class="a">Yanan Liu, Huiping Sun, Xu Song, Zhong Chen.</span> <span class="v">IEEE ISCC 2021.</span> <span class="l"><a href="https://ieeexplore.ieee.org/abstract/document/9631476">Paper</a></span></li>
-</ul>
-<div class="year">2020</div>
-<ul class="pub">
-  <li><span class="t">HoneyHash: Honeyword Generation Based on Transformed Hashes.</span> <span class="a">Canyang Shi, Huiping Sun.</span> <span class="v">NordSec 2020.</span> <span class="l"><a href="https://link.springer.com/chapter/10.1007%2F978-3-030-70852-8_10">Paper</a></span></li>
-  <li><span class="t">Research on Blockchain Performance Scalability and Security.</span> <span class="a">Zhilai Mao, Yanan Liu, Huiping Sun, Zhong Chen.</span> <span class="v">Netinfo Security 20(3), 2020 (in Chinese).</span> <span class="l"><a href="http://netinfo-security.org/CN/abstract/abstract6970.shtml">Paper</a></span></li>
-  <li><span class="t">Image-synch: A Liveness Detection Method Based on Ambient Image (poster).</span> <span class="a">Yuan Sun, Huiping Sun, Xixin Cao.</span> <span class="v">NDSS 2020.</span> <span class="l"><a href="https://www.ndss-symposium.org/wp-content/uploads/2020/02/NDSS2020posters_paper_1.pdf">Paper</a></span></li>
-  <li><span class="t">PassPage: Graphical Password Authentication Scheme Based on Web Browsing Records.</span> <span class="a">Xian Chu, Huiping Sun, Zhong Chen.</span> <span class="v">AsiaUSEC 2020 (with FC 2020).</span> <span class="l"><a href="https://link.springer.com/chapter/10.1007%2F978-3-030-54455-3_12">Paper</a></span></li>
-</ul>
-<div class="year">2019</div>
-<ul class="pub">
-  <li><span class="t">Sharding and Trading of Vehicles Odometer Data Based on Blockchain.</span> <span class="a">Yanan Liu, Yangyang Deng, Huiping Sun, Zhong Chen.</span> <span class="v">Insurance Theory &amp; Practice, 2019 (in Chinese).</span> <span class="l"><a href="http://bxls.cbpt.cnki.net/WKE/WebPublication/kbDownload.aspx?fn=BXLS201906007">Paper</a></span></li>
-</ul>
-<div class="year">2015 and earlier</div>
-<ul class="pub">
-  <li><span class="t">PassApp: My App is My Password!</span> <span class="a">Huiping Sun, Ke Wang, Xu Li, Nan Qin, Zhong Chen.</span> <span class="v">MobileHCI 2015.</span> <span class="l"><a href="http://dl.acm.org/citation.cfm?id=2785880">Paper</a><a href="./passapp/PassApp_MobileHCI15Presentation.pdf">Slides</a><a href="https://youtu.be/v3iu7Fj7oE8">Video</a><a href="./passapp/passapp.html">More</a></span></li>
-  <li><span class="t">SlidePIN: Slide-Based PIN Entry Mechanism on a Smartphone.</span> <span class="a">Huiping Sun, Shuaiying Guo, Ke Wang, Nan Qin, Zhong Chen.</span> <span class="v">PASSWORDS 2014.</span> <span class="l"><a href="./slidepin/2014_PASSWORDS14__SlidePIN_Pre-Proceeding-by-SunHP.pdf">Paper</a><a href="./slidepin/2014_PASSWORDS14__SlidePIN_Slides-by-SunHP.pdf">Slides</a><a href="./slidepin/slidepin.html">More</a></span></li>
-  <li><span class="t">CQARank: Jointly Model Topics and Expertise in Community Question Answering.</span> <span class="a">Liu Yang, Minghui Qiu, Swapna Gottipati, Feida Zhu, Jing Jiang, Huiping Sun, Zhong Chen.</span> <span class="v">ACM CIKM 2013.</span> <span class="l"><a href="https://dl.acm.org/citation.cfm?id=2505720">Paper</a></span></li>
-  <li><span class="t">Filtering Spam in Social Tagging System with Dynamic Behavior Analysis.</span> <span class="a">Bo Liu, Ennan Zhai, Huiping Sun, Yelu Chen, Zhong Chen.</span> <span class="v">ASONAM 2009.</span> <span class="l"><a href="https://ieeexplore.ieee.org/document/5231927/">Paper</a></span></li>
-  <li><span class="t">A Trust and Risk Framework to Enhance Reliable Interaction in E-Commerce.</span> <span class="a">Yan Li, Ming Zhao, Huiping Sun, Zhong Chen.</span> <span class="v">IEEE ICEBE 2008.</span> <span class="l"><a href="https://ieeexplore.ieee.org/document/4690654/">Paper</a></span></li>
-  <li><span class="t">Analysis and Improvement in Supermarket Service Model.</span> <span class="a">Dihui Bao, Yelu Chen, Huiping Sun, Zhong Chen.</span> <span class="v">ICSS 2008. <b>Best Paper.</b></span></li>
-</ul>
-
-<h2 id="students">Students</h2>
-<h3>Current</h3>
-<div class="grid">
-  <span><b>Ruoheng Wang</b> <i>2025 MSE · Agent</i></span>
-  <span><b>Weizhen Wang</b> <i>2025 MSE · Agent</i></span>
-  <span><b>Yanfeng Zheng</b> <i>2025 MSE · Blockchain</i></span>
-  <span><b>Yinghao Xu</b> <i>2025 MSE · Blockchain</i></span>
-  <span><b>Yufang Wang</b> <i>2025 MSE · Blockchain</i></span>
-  <span><b>Yiming Zhu</b> <i>2025 MCS · PCN</i></span>
-  <span><b>Peilu Guo</b> <i>2024 MSE · PCN</i></span>
-  <span><b>Xiangyang Li</b> <i>2024 MSE · Blockchain</i></span>
-  <span><b>Yueqi Wu</b> <i>2024 MSE · PCN</i></span>
-  <span><b>Rui Zhou</b> <i>2024 MSE · Accountability</i></span>
-  <span><b>Jinji Fu</b> <i>2024 MSE · Accountability</i></span>
-  <span><b>Jiawei Cheng</b> <i>2024 MSE · Accountability</i></span>
+<h2 id="grading"><span class="zh">考核方式</span><span class="en">Grading</span></h2>
+<div class="grade">
+  <div><b>45%</b><span class="zh">三次平时作业</span><span class="en">Three homework assignments</span></div>
+  <div><b>15%</b><span class="zh">出席、课堂表现、大模型使用等</span><span class="en">Attendance, participation and use of LLM tools</span></div>
+  <div><b>40%</b><span class="zh">课程项目：报告 + 答辩</span><span class="en">Course project: report and presentation</span></div>
 </div>
 
-<h3>Alumni</h3>
-<p style="color:var(--muted);font-size:.93rem">Over 100 graduates since 2006. Where they went, by graduation year:</p>
+<h2 id="project"><span class="zh">课程项目</span><span class="en">Course Project</span></h2>
+<p>
+  <span class="zh">3–5 人一组，任选其一：① 某区块链应用场景的商业分析报告（含监管与可行性）；② 某区块链技术的总结与分析报告；③ AI × 区块链交叉方向调研（Agent 支付、去中心化算力等）。其余自选方向也可。<b>10-18</b> 提交一页纸开题，<b>12-06</b> 答辩。</span>
+  <span class="en">Teams of 3–5. Choose one: (1) a business analysis report on a blockchain use case, including regulation and feasibility; (2) a summary and analysis report on a specific blockchain technology; (3) a survey of an AI × blockchain topic such as agent payments or decentralized compute. Other self-chosen topics are welcome. One-page proposal due <b>10-18</b>; presentations on <b>12-06</b>.</span>
+</p>
 
-<details open><summary>2024 – 2026</summary><div class="grid">
-  <span><b>Zecheng Liu</b> <i>China Unicom, 2026</i></span><span><b>Di Gao</b> <i>ByteDance, 2026</i></span><span><b>Chang Dai</b> <i>ByteDance, 2026</i></span><span><b>Changhao Zhang</b> <i>ByteDance, 2026</i></span><span><b>Chicheng Qian</b> <i>NFRA Jiangsu, 2026</i></span><span><b>Baiyue Yin</b> <i>Tencent, 2026</i></span>
-  <span><b>Yifu Zhang</b> <i>ByteDance, 2025</i></span><span><b>Shuaishuai Ni</b> <i>Baidu, 2025</i></span><span><b>Shuxuan Liu</b> <i>ByteDance, 2025</i></span><span><b>Jinjue Zhou</b> <i>China Life, 2025</i></span><span><b>Yiseng Hong</b> <i>PhD, Tsinghua, 2025</i></span><span><b>Baolin Li</b> <i>Kuaishou, 2025</i></span><span><b>Meijun Liu</b> <i>MS, HKUST-GZ, 2025</i></span><span><b>Lifeng Ding</b> <i>MS, Tsinghua SIGS, 2025</i></span>
-  <span><b>Bingyu Liu</b> <i>China Development Bank, 2024</i></span><span><b>Haotian Zhao</b> <i>China Mobile, 2024</i></span><span><b>Xinyu Song</b> <i>China Unicom Digital Tech, 2024</i></span><span><b>Chengye Jiang</b> <i>Ant Group, 2024</i></span><span><b>Xiangchao Dong</b> <i>Maanshan Finance Bureau, 2024</i></span><span><b>Kexin Tang</b> <i>MS, Univ. of Washington, 2024</i></span><span><b>Yunxi Shi</b> <i>MS, Univ. of Hong Kong, 2024</i></span><span><b>Weiao Feng</b> <i>Meituan, 2024</i></span>
-</div></details>
-
-<details><summary>2020 – 2023</summary><div class="grid">
-  <span><b>Xu Song</b> <i>Uranus Research, 2023</i></span><span><b>Xin Liu</b> <i>ByteDance, 2023</i></span><span><b>Yang Lu</b> <i>2023</i></span><span><b>Jiang Wu</b> <i>China Life Shanghai, 2023</i></span><span><b>Shiyi Tang</b> <i>Ant Group, 2023</i></span><span><b>Meng Zhao</b> <i>Alibaba, 2023</i></span><span><b>Yining Liang</b> <i>MS, TU Eindhoven, 2023</i></span><span><b>Yuang Chen</b> <i>MS, NUS, 2023</i></span>
-  <span><b>Meilin Lv</b> <i>Meituan, 2022</i></span><span><b>Haoran Li</b> <i>Tencent, 2022</i></span><span><b>Kangjian Wei</b> <i>Tencent, 2022</i></span><span><b>Fanfei Gao</b> <i>Alibaba, 2022</i></span><span><b>Ye Zhou</b> <i>CASIC, 2021</i></span><span><b>Hengli Gao</b> <i>XPeng, 2022</i></span><span><b>Linfeng Li</b> <i>MS, Univ. of Hong Kong, 2022</i></span><span><b>Yining Ma</b> <i>MSDS, Columbia, 2022</i></span>
-  <span><b>Yanan Liu</b> <i>Bank of China, 2021</i></span><span><b>Yuan Sun</b> <i>ICBC, 2021</i></span><span><b>Yuan Wang</b> <i>Wujiang Gov., Suzhou, 2021</i></span><span><b>Zehao Xu</b> <i>ChinaSo, 2021</i></span><span><b>Jiahao Zhang</b> <i>CSDC, 2021</i></span><span><b>Chenshuo Liu</b> <i>Agricultural Bank of China, 2021</i></span><span><b>Yibo Xu</b> <i>Nanjing Gov., 2021</i></span><span><b>Zhijiao Guo</b> <i>China Development Bank, 2021</i></span>
-  <span><b>Sijia Du</b> <i>Bank of Communications, 2020</i></span><span><b>Mingyi Ma</b> <i>PhD, Tsinghua, 2023</i></span><span><b>Mengyao Guo</b> <i>2020</i></span><span><b>Tiantong Pu</b> <i>BICI, 2020</i></span><span><b>Xin Chen</b> <i>Industrial Bank, 2020</i></span><span><b>Hui Li</b> <i>2020</i></span><span><b>Xian Chu</b> <i>China Everbright Bank, 2020</i></span><span><b>Kunpeng Ren</b> <i>PhD, NTU Singapore, 2020</i></span>
-</div></details>
-
-<details><summary>2015 – 2019</summary><div class="grid">
-  <span><b>Haotian Hao</b> <i>Bank of China, 2019</i></span><span><b>Kai Wang</b> <i>Xiaomi, 2019</i></span><span><b>Youyou Yuanmei</b> <i>Bank of China, 2019</i></span><span><b>Zilai Mao</b> <i>CSDC, 2019</i></span><span><b>Xiaolin Qin</b> <i>Beijing Unicom, 2019</i></span><span><b>Jiquan Chen</b> <i>Guangdong Telecom, 2019</i></span><span><b>Yangyang Deng</b> <i>PhD, Univ. of Melbourne, 2019</i></span><span><b>Ziwei Zhu</b> <i>PhD, Duke, 2019</i></span>
-  <span><b>Xuwen Han</b> <i>2018</i></span><span><b>Xiaolu Li</b> <i>NetsUnion Clearing, 2018</i></span><span><b>Mengyu Xuan</b> <i>Peking University, 2018</i></span><span><b>Xingming Song</b> <i>Haikou Bank, 2018</i></span>
-  <span><b>Jingshu Lv</b> <i>Bank of China, 2017</i></span><span><b>Meng Wei</b> <i>Agricultural Development Bank, 2017</i></span><span><b>Hao Zhang</b> <i>Shanxi Provincial Gov., 2017</i></span><span><b>Ke Wang</b> <i>VISA Research; PhD, UNC, 2017</i></span>
-  <span><b>Xu Li</b> <i>Henan Public Security Dept., 2016</i></span><span><b>Yufeng Fu</b> <i>NFRA Beijing, 2016</i></span><span><b>Nan Qin</b> <i>Garena, Singapore, 2016</i></span><span><b>Jianchao Guo</b> <i>MIIT Information Center, 2016</i></span><span><b>Yanan Gao</b> <i>State Information Center, 2016</i></span><span><b>Yi Liu</b> <i>Agricultural Bank of China, 2016</i></span>
-  <span><b>Yuting Liu</b> <i>China Construction Bank, 2015</i></span><span><b>Jiaxu He</b> <i>Meituan, 2015</i></span><span><b>Song Chang</b> <i>2015</i></span>
-</div></details>
-
-<details><summary>2006 – 2014</summary><div class="grid">
-  <span><b>Liu Yang</b> <i>Google Research; PhD, UMass Amherst, 2014</i></span><span><b>Di Wang</b> <i>Ping An, 2014</i></span><span><b>Shuaiying Guo</b> <i>Alibaba, 2014</i></span><span><b>Xuanting Song</b> <i>Sunlands, 2014</i></span><span><b>Desheng Zhou</b> <i>2014</i></span><span><b>Wenpeng Cui</b> <i>State Grid, 2014</i></span><span><b>Qian Hou</b> <i>iQIYI, 2014</i></span>
-  <span><b>Meimei Liu</b> <i>China Resources, 2013</i></span><span><b>Yuan Pan</b> <i>2013</i></span><span><b>Linfang Hu</b> <i>2013</i></span><span><b>Wenya Feng</b> <i>PhD, 2013</i></span>
-  <span><b>Minghui Cui</b> <i>SPD Bank, 2012</i></span><span><b>Zhouwei Su</b> <i>China Minsheng Bank, 2012</i></span><span><b>Shun Li</b> <i>CBRC, 2012</i></span><span><b>Zhenxiang Wu</b> <i>Agricultural Bank of China, 2012</i></span><span><b>Ying Sun</b> <i>Agricultural Bank of China, 2012</i></span><span><b>Kai Ma</b> <i>CICC, 2012</i></span><span><b>Kai Lin</b> <i>CCBFT, 2012</i></span><span><b>Fan Zhang</b> <i>Tencent, 2012</i></span><span><b>Qing Shao</b> <i>2012</i></span><span><b>Zibin Yang</b> <i>Technical Director, iQIYI, 2012</i></span><span><b>Changjun Shuai</b> <i>Agricultural Bank of China, 2012</i></span>
-  <span><b>Cheng Lian</b> <i>Momenta, 2011</i></span><span><b>Qin Guo</b> <i>Microsoft, USA, 2011</i></span><span><b>Wenqing Lu</b> <i>2011</i></span><span><b>Bo Yang</b> <i>China Merchants Bank, 2011</i></span>
-  <span><b>Yelu Chen</b> <i>ED/VP, Goldman Sachs Tokyo, 2010</i></span><span><b>Dihui Bao</b> <i>VP, Goldman Sachs HK, 2010</i></span><span><b>Bo Liu</b> <i>2010</i></span><span><b>Ennan Zhai</b> <i>PhD, Yale, 2010</i></span><span><b>Yi Miao</b> <i>2010</i></span><span><b>Yan Chen</b> <i>2010</i></span>
-  <span><b>Yan Li</b> <i>PhD, SMU Singapore, 2009</i></span><span><b>Ming Zhao</b> <i>2009</i></span><span><b>Zhenfei Wu</b> <i>DongMei, 2009</i></span><span><b>Xiaobo Qu</b> <i>2009</i></span><span><b>Yan Yang</b> <i>2009</i></span>
-  <span><b>Jianxing Xie</b> <i>Vice County Mayor, Anxi, 2008</i></span><span><b>Jingyuan Wang</b> <i>Security Director, XinAo Group, 2008</i></span><span><b>Yanchang Xiao</b> <i>China Telecom, 2008</i></span><span><b>Yi Peng</b> <i>Product Director, AutoNavi, 2008</i></span>
-  <span><b>Dongjun Heng</b> <i>TAL Education, 2007</i></span><span><b>Hongtao Bai</b> <i>Security Director, China Mobile IoT, 2007</i></span><span><b>Shen Liu</b> <i>2007</i></span><span><b>Xiaowei Feng</b> <i>ZoFun, 2007</i></span>
-  <span><b>Biao Wu</b> <i>Bank of China Mauritius; PhD, Renmin Univ., 2006</i></span><span><b>Zhengang Wu</b> <i>CNBM Technology; PhD, PKU, 2006</i></span>
-</div></details>
-
-<h2 id="service">Professional Service</h2>
+<h2 id="books"><span class="zh">教材与参考</span><span class="en">Textbook and Readings</span></h2>
 <ul>
-  <li><b>FinTech expert</b>, Beijing Municipal Science &amp; Technology Commission (2022–present)</li>
-  <li><b>Judge</b>: Digital China Innovation Competition (2020, 2021, 2024); Xiongan International FinTech Innovation and Technology Application Competition (2024, 2025)</li>
-  <li><b>Program committee</b>: CPSCom (2013, 2015), RFIDSec Asia (2011, 2013), CIT 2012, iThings 2011, BWCCA 2010, MIST 2010, AIR (2008, 2009)</li>
-  <li><b>Reviewer</b>: IEEE Computer, IEEE Communications Magazine, IEEE TDSC, IEEE TSC, IEEE TNSM, IEEE Systems Journal, ACM TOIT, The Computer Journal, Security and Communication Networks, Peer-to-Peer Networking and Applications, IEICE Transactions</li>
+  <li><b><span class="zh">课程教材</span><span class="en">Textbook</span></b>: <span class="zh">陈钟、孙惠平，《区块链导论》，人民邮电出版社</span><span class="en">Chen Zhong and Sun Huiping, <i>Introduction to Blockchain</i> (in Chinese), Posts &amp; Telecom Press</span></li>
+  <li><b><span class="zh">课程电子书</span><span class="en">Course e-book</span></b>: <span class="zh">《区块链十讲》（网络版，GitHub 地址待发布）</span><span class="en"><i>Blockchain in Ten Lectures</i> (online edition, GitHub link to be announced)</span></li>
+  <li><b><span class="zh">课程参考书</span><span class="en">Reference books</span></b>:
+    <ul>
+      <li>Narayanan et al., <i>Bitcoin and Cryptocurrency Technologies</i>, Princeton University Press — <a href="https://bitcoinbook.cs.princeton.edu"><span class="zh">免费预印本</span><span class="en">free preprint</span></a></li>
+      <li>Antonopoulos, <i>Mastering Bitcoin</i> / <i>Mastering Ethereum</i>, O'Reilly — <a href="https://github.com/bitcoinbook/bitcoinbook">Mastering Bitcoin</a> · <a href="https://github.com/ethereumbook/ethereumbook">Mastering Ethereum</a></li>
+    </ul>
+  </li>
 </ul>
-
-<h2 id="contact">Contact</h2>
-<p><a href="mailto:sunhp@ss.pku.edu.cn">sunhp@ss.pku.edu.cn</a><br>
-Room 1530, No. 1 Building of Science, Peking University, Beijing 100871, China</p>
 </main>
 
-<footer>Huiping Sun · <a href="http://www.ss.pku.edu.cn/">School of Software and Microelectronics</a>, <a href="http://www.pku.edu.cn">Peking University</a> · Updated September 2026</footer>
+<footer>
+  <span class="zh">历届课程</span><span class="en">Past offerings</span>:
+  <a href="../bc202509/">2025</a> · <a href="../bc202409/">2024</a> · <a href="../bc202309/">2023</a> · <a href="../bc202209/">2022</a> · <a href="../bc202109/">2021</a> · <a href="../bc202009/">2020</a> · <a href="../bc201909/">2019</a> · <a href="../bc201809/">2018</a>
+</footer>
+
+<script>
+(function(){
+  var body=document.body,btn=document.getElementById('langbtn');
+  function setLang(l){body.className=l;document.documentElement.lang=(l==='zh'?'zh-CN':'en');try{localStorage.setItem('lang',l)}catch(e){}renderNow();}
+  btn.onclick=function(){setLang(body.className==='zh'?'en':'zh');};
+  var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+  if(saved==='en'||saved==='zh'){body.className=saved;document.documentElement.lang=(saved==='zh'?'zh-CN':'en');}
+
+  var rows=document.querySelectorAll('#rows tr'),next=null,idx=-1,today=new Date();today.setHours(0,0,0,0);
+  for(var i=0;i<rows.length;i++){if(new Date(rows[i].dataset.d+'T00:00:00')>=today){next=rows[i];idx=i;break;}}
+  if(next){next.classList.add('cur');next.id='r'+idx;}
+  function renderNow(){
+    var box=document.getElementById('now'),zh=body.className==='zh';
+    if(!next){box.innerHTML=zh?'<b>本学期课程已结束。</b>':'<b>This semester has ended.</b>';return;}
+    var c=next.children,sel='.'+body.className,t=function(td){var s=td.querySelector(sel);return s?s.textContent:td.textContent;};
+    box.innerHTML='<b>'+(zh?'下次上课':'Next class')+'</b> '+c[0].textContent+' · '+t(c[2])+(t(c[3])?' · '+(zh?'大模型模块：':'LLM module: ')+t(c[3]):'')+' · <a href="#'+next.id+'">'+(zh?'查看材料':'materials')+'</a>';
+  }
+  renderNow();
+})();
+</script>
 </body>
 </html>
